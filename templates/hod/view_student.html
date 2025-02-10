@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Sudents Table</h4>
+                  <p class="card-category">View Students</p>
+                  {% include 'includes/messages.html' %}
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                        Username
+                        </th>
+                        <th>
+                          Course
+                        </th>
+                        <th>
+                          Session Year
+                        </th>
+                      <th>
+                        Action
+                      </th>
+                      </thead>
+                      <tbody>
+                      {% for i in student %}
+                        <tr>
+                          <td>
+                           {{i.id}}
+                          </td>
+                          <td>
+                            {{i.admin.first_name}}  {{i.admin.last_name}}
+                          </td>
+                          <td>
+                            {{i.admin.username}}
+                          </td>
+                          <td>
+                            {{i.course_id.name}}
+                          </td>
+                          <td class="text-primary">
+                            {{i.session_year_id.session_start}}&nbsp;&nbsp;To&nbsp;&nbsp;{{i.session_year_id.session_end}}
+                          </td>
+                          <td>
+
+                            <a href="{% url 'edit_student' i.id %}" class="material-icons">edit</a> <a href="{% url 'delete_student' i.admin.id %}" class="material-icons">delete</a>
+
+
+                          </td>
+
+
+                        </tr>
+
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+        </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

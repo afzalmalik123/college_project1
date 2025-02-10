@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">account_circle</i>
+            </div>
+            <p class="card-category">Students</p>
+            <h3 class="card-title">{{student_count}}
+
+            </h3>
+          </div>
+            <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Last 24 Hours
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">folder_shared</i>
+            </div>
+            <p class="card-category">Staff</p>
+            <h3 class="card-title">{{staff_count}}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Last 24 Hours
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">school</i>
+            </div>
+            <p class="card-category">Course</p>
+            <h3 class="card-title">{{course_count}}</h3>
+          </div>
+            <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Last 24 Hours
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="fa fa-book"></i>
+            </div>
+            <p class="card-category">Subject</p>
+            <h3 class="card-title">{{subject_count}}</h3>
+          </div>
+           <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Last 24 Hours
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-chart">
+           <img src="https://www.usnews.com/object/image/00000175-d689-db19-a3ff-d7dd617c0000/201117-collegelecture-stock.jpg?update-time=1605622165327&size=responsive640" alt="">
+
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> updated 4 minutes ago
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-chart">
+                <img src="https://img.favpng.com/14/4/5/graduation-ceremony-college-desktop-wallpaper-high-school-square-academic-cap-png-favpng-RecRMP6UCrpS6eqTDUMDVaaYN.jpg" alt="">
+
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-chart">
+                  <img src="https://i.pinimg.com/550x/66/2b/67/662b67db169be01c16a8b57be3f3cf33.jpg" alt="">
+
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <div class="card-body">
+            <div class="tab-content">
+
+              <div class="tab-pane" id="messages">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                      </td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>Sign contract for "What are conference organizers afraid of?"</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane" id="settings">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                      </td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>Sign contract for "What are conference organizers afraid of?"</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Employees Stats</h4>
+            <p class="card-category">New employees on 15th September, 2016</p>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-warning">
+                <th>ID</th>
+                <th>Teacher Name</th>
+                <th>Course</th>
+                <th>Subject</th>
+              </thead>
+              <tbody>
+              {% for i in subject %}
+                <tr>
+                  <td>{{i.id}}</td>
+                  <td>{{i.staff.admin.first_name}} {{i.staff.admin.last_name}}</td>
+                  <td>{{i.course}}</td>
+                  <td>{{i.name}}</td>
+                </tr>
+              {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}

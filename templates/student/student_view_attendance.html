@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %} Page User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if action is None %}
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">View Attendance</h4>
+                  <p class="card-category">View Attendance</p>
+                  {% include 'includes/messages.html' %}
+
+                </div>
+                <div class="card-body">
+                  <form action="?action=show_attendance" method="post">
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                       <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Select Subject</label>
+                          <select class="form-control" name="subject_id" required>
+                            {% for i in subjects %}
+                            <option value="{{i.id}}">{{i.name}}</option>
+                            {% endfor %}
+
+                          </select>
+
+                        </div>
+                      </div>
+
+                      </div>
+
+                    <button type="submit" class="btn btn-primary pull-right">Show Attendance</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  {% if user.profile_pic == "" %}
+                    <a href="#pablo">
+                    <img class="img" src="/static/assets/img/faces/noimg1.png" />
+                  </a>
+                  {% else %}
+                  <a href="#">
+                    <img class="img" src="/{{user.profile_pic}}" />
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category text-gray">
+
+                  </h6>
+                  <h4 class="card-title">
+
+                  </h4>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p>
+                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+{% else %}
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">View Attendance</h4>
+                  <p class="card-category">View Attendance</p>
+                  {% include 'includes/messages.html' %}
+
+                </div>
+                <div class="card-body">
+                  <form >
+
+
+                    <div class="row">
+
+                       <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Subject Name</label>
+                          <select class="form-control" name="subject_id" disabled>
+
+                            <option value="{{get_subject.id}}">{{get_subject}}</option>
+
+
+                          </select>
+
+                        </div>
+                      </div>
+
+                      </div>
+
+
+                    <div class="clearfix">
+                       <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+
+                        <th>
+                         Date
+                        </th>
+                        <th>
+                        Subject name
+                        </th>
+                        <th>
+                          Session Year
+                        </th>
+
+
+                      </thead>
+                      <tbody>
+                      {% for i in attendance_report %}
+                        <tr>
+
+                          <td>
+                            {{i.attendance_id.attendance_date}}
+                          </td>
+                          <td>
+                            {{i.attendance_id.subject_id.name}}
+                          </td>
+                          <td>
+                            {{i.attendance_id.session_year_id.session_start}}  To   {{i.attendance_id.session_year_id.session_end}}
+
+                          </td>
+
+
+
+
+                        </tr>
+
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  {% if user.profile_pic == "" %}
+                    <a href="#pablo">
+                    <img class="img" src="/static/assets/img/faces/noimg1.png" />
+                  </a>
+                  {% else %}
+                  <a href="#">
+                    <img class="img" src="/{{user.profile_pic}}" />
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category text-gray">
+
+                  </h6>
+                  <h4 class="card-title">
+
+                  </h4>
+                  <p class="card-description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                  </p>
+                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

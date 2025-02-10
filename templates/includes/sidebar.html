@@ -1,0 +1,181 @@
+{% load active_link_tags %}
+<div class="sidebar"  data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a style="color:purple;" target="_blank" rel="noopener noreferrer"
+           href="#" class="simple-text logo-normal">
+       <img class="img" src="/static/assets/img/logo.png" />
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        {% if user.user_type == '1' %}
+        <ul class="nav">
+
+          <li class="{% active_link 'home' %}">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="{% active_link 'profile' %}">
+            <a class="nav-link" href="{% url 'profile' %}">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+
+
+          <li class="{% active_link 'add_student' %}">
+            <a class="nav-link dropdown" href="{% url 'add_student' %}">
+              <i class="material-icons">account_circle</i>
+              <p>Add Student</p>
+            </a>
+          </li>
+          <li class="{% active_link 'view_student' %}">
+            <a class="nav-link" href="{% url 'view_student' %}">
+              <i class="material-icons">visibility</i>
+              <p>View Student</p>
+            </a>
+          </li>
+          <li class="{% active_link 'add_staff' %}">
+            <a class="nav-link" href="{% url 'add_staff' %}">
+              <i class="material-icons">folder_shared</i>
+              <p>Add Staff</p>
+            </a>
+          </li>
+          <li class="{% active_link 'view_staff' %}">
+            <a class="nav-link" href="{% url 'view_staff' %}">
+              <i class="material-icons">visibility</i>
+              <p>View Staff</p>
+            </a>
+          </li>
+          <li class="{% active_link 'add_subject' %}">
+            <a class="nav-link" href="{% url 'add_subject' %}">
+              <i class="material-icons">library_books</i>
+              <p>Add subject</p>
+            </a>
+          </li>
+
+          <li class="{% active_link 'view_subject' %}">
+            <a class="nav-link" href="{% url 'view_subject' %}">
+              <i class="material-icons">visibility</i>
+              <p>View Subject</p>
+            </a>
+          </li>
+            <li class="{% active_link 'add_course' %}">
+            <a class="nav-link" href="{% url 'add_course' %}">
+              <i class="material-icons">school</i>
+              <p>Add Course</p>
+            </a>
+          </li>
+
+          <li class="{% active_link 'view_course' %}">
+            <a class="nav-link" href="{% url 'view_course' %}">
+              <i class="material-icons">visibility</i>
+              <p>View  Course</p>
+            </a>
+          </li>
+
+            <li class="{% active_link 'add_session' %}">
+            <a class="nav-link" href="{% url 'add_session' %}">
+              <i class="material-icons">watch_later</i>
+              <p>Add Session Year</p>
+            </a>
+          </li>
+
+          <li class="{% active_link 'view_session' %}">
+            <a class="nav-link" href="{% url 'view_session' %}">
+              <i class="material-icons">visibility</i>
+              <p>View Session Year</p>
+            </a>
+          </li>
+
+           <li class="{% active_link 'view_session' %}">
+            <a class="nav-link" href="{% url 'staff_send_notification' %}">
+              <i class="material-icons">notifications</i>
+              <p>Staff Send Notication</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'dologout' %}" >
+              <i class="material-icons">directions_run</i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+        </ul>
+        {% elif user.user_type == '2' %}
+
+        <ul class="nav">
+
+          <li class="{% active_link 'home' %}">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="{% active_link 'profile' %}">
+            <a class="nav-link" href="{% url 'profile' %}">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+           <li class="">
+            <a class="nav-link" href="{% url 'take_attendance' %}">
+              <i class="material-icons">import_contacts</i>
+              <p>Take Attendance</p>
+            </a>
+          </li>
+
+           <li class="">
+            <a class="nav-link" href="{% url 'view_attendance' %}">
+              <i class="material-icons">remove_red_eye</i>
+              <p>View/Update Attendance</p>
+            </a>
+          </li>
+
+
+           <li class="nav-item ">
+            <a class="nav-link" href="{% url 'dologout' %}" >
+              <i class="material-icons">directions_run</i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+
+
+        {% else %}
+
+          <ul class="nav">
+
+          <li class="{% active_link 'home' %}">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="{% active_link 'profile' %}">
+            <a class="nav-link" href="{% url 'profile' %}">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+              <li class="{% active_link 'student_view_attendance' %}">
+            <a class="nav-link" href="{% url 'student_view_attendance' %}">
+              <i class="material-icons">visibility</i>
+              <p>View Attendance</p>
+            </a>
+          </li>
+                  <li class="nav-item ">
+            <a class="nav-link" href="{% url 'dologout' %}" >
+              <i class="material-icons">directions_run</i>
+              <p>Logout</p>
+            </a>
+          </li>
+          </ul>
+
+        {% endif %}
+
+      </div>
+
+    </div>

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Subject Table</h4>
+                  <p class="card-category">View Subject</p>
+                  {% include 'includes/messages.html' %}
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                         Subject Name
+                        </th>
+                        <th>
+                        Course Name
+                        </th>
+                        <th>
+                          Staff Name
+                        </th>
+
+                      <th>
+                        Action
+                      </th>
+                      </thead>
+                      <tbody>
+                      {% for i in subject%}
+                        <tr>
+                          <td>
+                           {{i.id}}
+                          </td>
+                          <td>
+                            {{i.name}}
+                          </td>
+                          <td>
+                            {{i.course.name}}
+                          </td>
+                          <td>
+                            {{i.staff.admin.first_name}}  {{i.staff.admin.last_name}}
+                          </td>
+
+                          <td>
+
+                            <a href="{% url 'edit_subject' i.id %}" class="material-icons">edit</a> <a href="{% url 'delete_subject' i.id %}" class="material-icons">delete</a>
+
+
+                          </td>
+
+
+                        </tr>
+
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+        </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

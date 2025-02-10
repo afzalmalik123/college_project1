@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% block title %} Page User {% endblock %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+<div class="row">
+   <div class="col-md-8">
+      <div class="card">
+         <div class="card-header card-header-primary">
+            <h4 class="card-title">View Attendance</h4>
+            <p class="card-category">View Attendance</p>
+            {% include 'includes/messages.html' %}
+         </div>
+         {% if action is None %}
+         <div class="card-body">
+            <form action="?action=view_attendance" method="post">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="bmd-label-floating">Subject</label>
+                        <select class="form-control" name="subject_id" required>
+                           {% for i in subject %}
+                           <option value="{{i.id}}">{{i.name}}</option>
+                           {% endfor %}
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="bmd-label-floating">Session Year</label>
+                        <select class="form-control" name="session_year_id" required>
+                           {% for i in session_year %}
+                           <option value="{{i.id}}">{{i.session_start}}  To   {{i.session_end}}</option>
+                           {% endfor %}
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="bmd-label-floating">Attendance Date</label>
+                        <br>
+                        <br>
+                        <input type="date" class="form-control"  name="attendance_date" required>
+                     </div>
+                  </div>
+
+               </div>
+               <br>
+               <button type="submit" class="btn btn-primary pull-right">Show Students</button>
+               <div class="clearfix"></div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-4">
+      <div class="card card-profile">
+         <div class="card-avatar">
+            {% if user.profile_pic == "" %}
+            <a href="#pablo">
+            <img class="img" src="/static/assets/img/faces/noimg1.png" />
+            </a>
+            {% else %}
+            <a href="#">
+            <img class="img" src="/{{user.profile_pic}}" />
+            </a>
+            {% endif %}
+         </div>
+         <div class="card-body">
+            <h6 class="card-category text-gray">
+            </h6>
+            <h4 class="card-title">
+            </h4>
+            <p class="card-description">
+               Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+            <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+         </div>
+         {% else %}
+         <div class="card-body">
+            <form action="{% url 'save_attendance' %}" method="post">
+               {% csrf_token %}
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="bmd-label-floating">Subject</label>
+                        <select class="form-control" name="subject_id" disabled>
+                           <option value="{{get_subject.id}}">{{get_subject}}</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="bmd-label-floating">Session Year </label>
+                        <select class="form-control" name="session_year_id" disabled>
+                           <option value="{{get_session_year.id}}">{{get_session_year}}</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label class="bmd-label-floating">Attendance Date</label>
+                    <br>
+                     <input type="date" class="form-control"  name="attendance_date" value="{{attendance_date}}" disabled>
+                  </div>
+               </div>
+               <br>
+
+
+               <div class="clearfix">
+                                   <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                         Name
+                        </th>
+                        <th>
+                        Email
+                        </th>
+
+
+                      </thead>
+                      <tbody>
+                      {% for i in attendance_report %}
+                        <tr>
+                          <td>
+                           {{i.student_id.admin.id}}
+                          </td>
+                          <td>
+                            {{i.student_id.admin.first_name}}  {{i.student_id.admin.last_name}}
+                          </td>
+                          <td>
+                            {{i.student_id.admin.email}}
+                          </td>
+
+
+
+                        </tr>
+
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-4">
+      <div class="card card-profile">
+         <div class="card-avatar">
+            {% if user.profile_pic == "" %}
+            <a href="#pablo">
+            <img class="img" src="/static/assets/img/faces/noimg1.png" />
+            </a>
+            {% else %}
+            <a href="#">
+            <img class="img" src="/{{user.profile_pic}}" />
+            </a>
+            {% endif %}
+         </div>
+         <div class="card-body">
+            <h6 class="card-category text-gray">
+            </h6>
+            <h4 class="card-title">
+            </h4>
+            <p class="card-description">
+               Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+            <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+</div>
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
